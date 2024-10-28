@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)), 
+                        url('https://i.pinimg.com/originals/1c/de/3c/1cde3c63f77453e1e7a985049aa37f4f.png') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 380px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .container:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #0d3b66;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: left;
+            color: #4a4a4a;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #dcdfe3;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f4f7fa;
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+        }
+
+        button {
+            background: linear-gradient(145deg, #0d3b66, #007bff);
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 91, 204, 0.5);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        /* Input custom styles */
+        select {
+            background-color: #e9eff3;
+            cursor: pointer;
+        }
+
+        /* Adding smooth hover for selects */
+        select:hover, input:hover {
+            border-color: #007bff;
+        }
+
+        /* Footer with subtle hover effect */
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer a:hover {
+            color: #0056b3;
+        }
+
+        /* Extra decorative elements */
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #007bff, #00c4ff);
+            border-radius: 50%;
+            opacity: 0.6;
+            box-shadow: 0 5px 10px rgba(0, 123, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .container:hover::before {
+            transform: scale(1.2);
+        }
+
+        .container::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ffe53b, #ff6d00);
+            border-radius: 50%;
+            opacity: 0.6;
+            box-shadow: 0 5px 10px rgba(255, 109, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .container:hover::after {
+            transform: scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Book Your Room</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="booking_date">Select Date:</label>
+            <input type="date" id="booking_date" name="booking_date" required>
+
+            <label for="no_of_persons">Number of Persons:</label>
+            <select id="no_of_persons" name="no_of_persons" required>
+                <option value="1">1 Person</option>
+                <option value="2">2 Persons</option>
+                <option value="3">3 Persons</option>
+                <option value="4">4 Persons</option>
+            </select>
+
+            <label for="no_of_rooms">Number of Rooms:</label>
+            <select id="no_of_rooms" name="no_of_rooms" required>
+                <option value="1">1 Room</option>
+                <option value="2">2 Rooms</option>
+                <option value="3">3 Rooms</option>
+            </select>
+
+            <button type="submit">Book Now</button>
+        </form>
+        <div class="footer">
+            <p>Need help? <a href="#">Contact Support</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
